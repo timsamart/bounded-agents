@@ -9,3 +9,12 @@ build/_spine_*.pdf
 __pycache__/
 .DS_Store
 *.pyc
+
+# Local ADR extraction scratch (not manuscript)
+build/adr-*.json
+build/adr-*.md
+build/adr-*.txt
+build/extract_adr_context.py
+build/generate_adr_notes.py
+build/print_compact.py
+

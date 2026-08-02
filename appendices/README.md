@@ -1,6 +1,6 @@
 # Appendices
 
-Edition 0.1 draft. Spine markers such as `[A-6.1]` resolve to the headings below.
+Edition 0.1. Spine markers such as `[A-6.1]` resolve to headings in these files.
 
 - [Appendix A. Control register](a-control-register.md)
 - [Appendix B. Architecture decision records](b-architecture-decision-records.md)

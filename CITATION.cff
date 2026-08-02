@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: "Bounded Agents: Governed Agentic Infrastructure"
+message: "If you use this work, please cite it using the metadata below."
+type: software
+authors:
+  - family-names: Sam
+    given-names: Timo
+    website: "https://timosam.com"
+repository-code: "https://github.com/timsamart/bounded-agents"
+url: "https://github.com/timsamart/bounded-agents"
+abstract: >-
+  How to give AI agents real authority when the model may be hostile:
+  a platform design that limits blast radius, proves what happened, and
+  can stop a run without help from the agent.
+keywords:
+  - AI agents
+  - agentic systems
+  - complete mediation
+  - authorization
+  - security architecture
+license: CC-BY-4.0
+version: "0.1.0-draft"
+date-released: "2026-08-01"

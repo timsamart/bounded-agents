@@ -1,0 +1,519 @@
+/* Governed Agentic Infrastructure — print stylesheet */
+
+:root {
+  --paper: #faf8f5;
+  --ink: #2f3b4a;
+  --ink-muted: #5c6b7a;
+  --accent: #c45c3e;
+  --accent-soft: #f3e6e1;
+  --cyan: #1a8aa8;
+  --rule: #c8c0b6;
+  --frame: #8a9aaa;
+  --code-bg: #f4f1ec;
+  --code-border: #d5cdc3;
+  --code-ink: #2a3542;
+  --table-stripe: #f4f1ec;
+}
+
+@page {
+  size: A4;
+  background: var(--paper);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  padding: 0 var(--content-pad, 9mm) 3mm;
+  color: var(--ink);
+  font-family: "Source Serif 4", "Literata", Georgia, "Times New Roman", serif;
+  font-size: 10.8pt;
+  line-height: 1.58;
+  font-optical-sizing: auto;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Cover */
+.cover {
+  page-break-after: always;
+  min-height: 235mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6mm 0 4mm;
+}
+
+.cover-frame {
+  width: 100%;
+  max-width: 150mm;
+  text-align: center;
+  padding: 16mm 10mm;
+  border: 2px solid var(--frame);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(250, 248, 245, 0.2)),
+    var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.cover-kicker {
+  margin: 0 0 8mm;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.cover-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", "Libre Baskerville", Georgia, serif;
+  font-size: 30pt;
+  font-weight: 700;
+  line-height: 1.08;
+  color: var(--ink);
+}
+
+.cover-subtitle {
+  margin: 7mm 0 0;
+  font-size: 13pt;
+  line-height: 1.45;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+.cover-tagline {
+  margin: 4mm 0 0;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: var(--ink-muted);
+}
+
+.cover-license {
+  margin: 4mm 0 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8pt;
+  color: var(--ink-muted);
+}
+
+.citation-needed {
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 0.92em;
+}
+
+.forward-ref {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85em;
+  color: var(--ink-muted);
+}
+
+nav#TOC {
+  page-break-after: always;
+}
+
+nav#TOC a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cover-rule {
+  width: 28mm;
+  height: 2px;
+  margin: 10mm auto;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.cover-meta,
+.cover-date {
+  margin: 0;
+  font-size: 9.5pt;
+  color: var(--ink-muted);
+}
+
+.cover-date {
+  margin-top: 4mm;
+  font-family: "IBM Plex Mono", monospace;
+  letter-spacing: 0.06em;
+}
+
+/* Pandoc body wrapper */
+body > header.cover + * {
+  padding-top: 2mm;
+}
+
+#title-block-header,
+h1#governed-agentic-infrastructure,
+h1#title-block-header + p.subtitle {
+  display: none;
+}
+
+h2#reference-architecture-for-giving-ai-agents-authority-without-handing-them-the-keys {
+  display: none;
+}
+
+/* Table of Contents */
+nav#TOC.toc-page {
+  page-break-before: always;
+  page-break-after: always;
+  margin: 0 0 6mm;
+  padding: 0;
+}
+
+nav#TOC > h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18pt;
+  font-weight: 600;
+  margin: 0 0 7mm;
+  padding-left: 4mm;
+  border-left: 3px solid var(--accent);
+  border-bottom: none;
+  color: var(--ink);
+}
+
+nav#TOC ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav#TOC > ul > li {
+  margin: 0 0 3mm;
+  padding: 0;
+  line-height: 1.35;
+}
+
+nav#TOC ul ul {
+  list-style: none;
+  padding: 0 0 0 5mm;
+  margin: 1.5mm 0 2mm;
+}
+
+nav#TOC ul ul > li {
+  margin: 0 0 1.5mm;
+  font-size: 9.5pt;
+  color: var(--ink-muted);
+}
+
+nav#TOC a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.2;
+  break-after: avoid;
+}
+
+h1 {
+  font-size: 22pt;
+  margin: 0 0 5mm;
+  padding-bottom: 3mm;
+  border-bottom: 1px solid var(--rule);
+}
+
+h2 {
+  font-size: 16pt;
+  margin: 9mm 0 4mm;
+  padding-left: 4mm;
+  border-left: 3px solid var(--accent);
+}
+
+/* Main chapters (##) always start on a fresh page */
+h2:not(#toc-title) {
+  break-before: page;
+  page-break-before: always;
+}
+
+h3 {
+  font-size: 12.5pt;
+  margin: 6mm 0 3mm;
+  color: #3a4a5c;
+}
+
+h4 {
+  font-size: 11pt;
+  margin: 4mm 0 2mm;
+}
+
+p {
+  margin: 0 0 3.5mm;
+  orphans: 3;
+  widows: 3;
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  margin: 7mm 0;
+  background: linear-gradient(90deg, transparent, var(--rule), transparent);
+}
+
+/* Design review & blockquotes */
+blockquote {
+  margin: 4mm 0 5mm;
+  padding: 4mm 5mm 4mm 6mm;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  color: #3a342f;
+  font-size: 10.2pt;
+  break-inside: avoid;
+}
+
+blockquote p {
+  margin: 0 0 2.5mm;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists */
+ul, ol {
+  margin: 0 0 4mm;
+  padding-left: 6mm;
+}
+
+li {
+  margin-bottom: 1.5mm;
+}
+
+li > p {
+  margin-bottom: 1.5mm;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4mm 0 6mm;
+  font-size: 9pt;
+  break-inside: avoid;
+}
+
+thead {
+  background: #e8eef3;
+}
+
+th, td {
+  border: 1px solid #d5dde6;
+  padding: 2.2mm 2.8mm;
+  vertical-align: top;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--table-stripe);
+}
+
+th {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #3f4f60;
+}
+
+/* Code — print-first, warm paper palette */
+code {
+  font-family: "IBM Plex Mono", "Consolas", monospace;
+  font-size: 8.6pt;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+  color: var(--code-ink);
+}
+
+pre,
+div.sourceCode,
+pre.sourceCode {
+  margin: 4mm 0 5mm;
+  padding: 4.5mm 5.5mm;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  border-radius: 3px;
+  overflow-x: auto;
+  font-size: 7.9pt;
+  line-height: 1.5;
+  break-inside: avoid;
+  border: 1px solid var(--code-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+div.sourceCode {
+  padding: 0;
+}
+
+pre.sourceCode {
+  margin: 0;
+}
+
+pre code,
+pre > code.sourceCode,
+code.sourceCode {
+  background: transparent;
+  padding: 0;
+  color: var(--code-ink);
+  font-size: inherit;
+  border-radius: 0;
+}
+
+/* Undo pandoc's broken print line-indent hack in Chromium PDF */
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: inline !important;
+  text-indent: 0 !important;
+  padding-left: 0 !important;
+  line-height: 1.5;
+}
+
+pre > code.sourceCode > span > a[aria-hidden="true"] {
+  display: none;
+}
+
+/* Syntax highlighting — muted, high contrast on cream paper */
+code.sourceCode span.kw { color: #1a5c6b; font-weight: 600; } /* keywords */
+code.sourceCode span.fu { color: #3d4f63; font-weight: 500; } /* functions */
+code.sourceCode span.st,
+code.sourceCode span.vs { color: #8b4d35; } /* strings */
+code.sourceCode span.at { color: #5c6b3a; } /* attributes / yaml keys */
+code.sourceCode span.dt { color: #6b4a2e; } /* types */
+code.sourceCode span.ch,
+code.sourceCode span.bn,
+code.sourceCode span.dv,
+code.sourceCode span.fl { color: #2d6a4f; } /* literals */
+code.sourceCode span.op { color: #5c6b7a; } /* operators */
+code.sourceCode span.co,
+code.sourceCode span.do { color: #6b7a8a; font-style: italic; } /* comments */
+code.sourceCode span.al,
+code.sourceCode span.er { color: #a63d2f; font-weight: 600; } /* errors */
+code.sourceCode span.im,
+code.sourceCode span.bu { color: #1a5c6b; } /* imports / builtins */
+code.sourceCode span.cf,
+code.sourceCode span.ot { color: #1a5c6b; font-weight: 600; } /* control flow */
+code.sourceCode span.pp { color: #8b6914; } /* preprocessor */
+code.sourceCode span.sc,
+code.sourceCode span.ss { color: #8b4d35; } /* special chars */
+code.sourceCode span.va { color: #3d4f63; } /* variables */
+code.sourceCode span.cn { color: #6b4a2e; } /* constants */
+code.sourceCode span.an,
+code.sourceCode span.cv,
+code.sourceCode span.in,
+code.sourceCode span.wa { color: #6b7a8a; font-style: italic; }
+
+/* Mermaid diagrams — always start on a fresh page so a large C4 view never
+   straddles a page boundary and leaves an orphaned near-blank page behind it. */
+.mermaid,
+div.mermaid {
+  margin: 0 0 8mm;
+  padding: 6mm 5mm;
+  background: #fff;
+  border: 1px solid var(--frame);
+  border-radius: 4px;
+  text-align: center;
+  break-inside: avoid;
+  break-before: page;
+  page-break-before: always;
+  box-shadow: 0 1px 10px rgba(47, 59, 74, 0.07);
+}
+
+pre.mermaid,
+code.mermaid {
+  background: #fff;
+  color: var(--ink-muted);
+  border: 1px dashed #c8c0b6;
+}
+
+/* Figures */
+figure, p > img, img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 5mm auto 2mm;
+  border: 1px solid #d8d0c6;
+  border-radius: 2px;
+  box-shadow: 0 1px 8px rgba(47, 59, 74, 0.08);
+}
+
+figcaption,
+img + em,
+p:has(img) + p em:only-child {
+  display: block;
+  text-align: center;
+  font-size: 8.8pt;
+  color: var(--ink-muted);
+  margin: 0 auto 5mm;
+  font-style: italic;
+}
+
+/* Section breaks */
+h2 {
+  break-before: auto;
+}
+
+h2:not(:first-of-type) {
+  padding-top: 1mm;
+}
+
+/* References */
+#references, #references + * {
+  font-size: 9pt;
+}
+
+/* Utility */
+.page-break {
+  break-before: page;
+}
+
+.cover-license {
+  margin-top: 3mm;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7.5pt;
+  letter-spacing: 0.02em;
+  color: #7a8794;
+}
+
+
+.page-break {
+  page-break-after: always;
+  break-after: page;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.draft-banner {
+  margin: 0 0 8mm;
+  padding: 3mm 4mm;
+  border: 1px solid #c8c0b6;
+  background: #f4f1ec;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8.5pt;
+  color: #5c6b7a;
+  letter-spacing: 0.04em;
+}

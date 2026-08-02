@@ -1,0 +1,168 @@
+% =====================================================================
+% Bibliography: Bounded Agents / Governed Agentic Infrastructure
+%
+% Citation key convention (CONV-005): creatorYYYYshorttitle, lowercase
+% ASCII. Specs use canonical ids (rfc9449). Status in `note` when stale-prone.
+% Formatting (CONV-006): single space around `=`, trailing comma on every field.
+% =====================================================================
+
+% ----- Section: Specifications and standards -----
+
+@misc{rfc6749,
+  author = {{Internet Engineering Task Force}},
+  title = {{The OAuth 2.0 Authorization Framework}},
+  howpublished = {RFC 6749},
+  year = {2012},
+  month = oct,
+  doi = {10.17487/RFC6749},
+  url = {https://www.rfc-editor.org/rfc/rfc6749},
+  urldate = {2026-08-01},
+  note = {proposed standard},
+}
+
+@misc{rfc8693,
+  author = {{Internet Engineering Task Force}},
+  title = {{OAuth 2.0 Token Exchange}},
+  howpublished = {RFC 8693},
+  year = {2020},
+  month = jan,
+  doi = {10.17487/RFC8693},
+  url = {https://www.rfc-editor.org/rfc/rfc8693},
+  urldate = {2026-08-01},
+  note = {proposed standard},
+}
+
+@misc{rfc9449,
+  author = {{Internet Engineering Task Force}},
+  title = {OAuth 2.0 Demonstrating Proof of Possession ({DPoP})},
+  howpublished = {RFC 9449},
+  year = {2023},
+  month = sep,
+  doi = {10.17487/RFC9449},
+  url = {https://www.rfc-editor.org/rfc/rfc9449},
+  urldate = {2026-08-01},
+  note = {proposed standard},
+}
+
+@misc{mcp2025spec,
+  author = {{Anthropic} and {Model Context Protocol contributors}},
+  title = {{Model Context Protocol Specification}},
+  year = {2025},
+  url = {https://modelcontextprotocol.io/specification},
+  urldate = {2026-07-14},
+  note = {living specification; pin retrieval date when citing behaviour},
+}
+
+@misc{mcp2025auth,
+  author = {{Anthropic} and {Model Context Protocol contributors}},
+  title = {{Model Context Protocol Authorization Specification}},
+  year = {2025},
+  url = {https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization},
+  urldate = {2026-07-14},
+  note = {living specification; pin retrieval date when citing behaviour},
+}
+
+@misc{spiffe2024,
+  author = {{SPIFFE Project}},
+  title = {Secure Production Identity Framework For Everyone ({SPIFFE})},
+  year = {2024},
+  url = {https://spiffe.io/docs/latest/spiffe-about/overview/},
+  urldate = {2026-08-01},
+  note = {project documentation},
+}
+
+@misc{w3c2025vc,
+  author = {{World Wide Web Consortium}},
+  title = {{Verifiable Credentials Data Model v2.0}},
+  year = {2025},
+  url = {https://www.w3.org/TR/vc-data-model-2.0/},
+  urldate = {2026-08-01},
+  note = {W3C Recommendation},
+}
+
+@misc{w3c2025statuslist,
+  author = {{World Wide Web Consortium}},
+  title = {{Bitstring Status List v1.0}},
+  year = {2025},
+  url = {https://www.w3.org/TR/vc-bitstring-status-list/},
+  urldate = {2026-08-01},
+  note = {W3C Recommendation},
+}
+
+@techreport{nist80061r2,
+  author = {{National Institute of Standards and Technology}},
+  title = {{Computer Security Incident Handling Guide}},
+  institution = {NIST},
+  number = {SP 800-61 Rev. 2},
+  year = {2012},
+  month = aug,
+  url = {https://csrc.nist.gov/pubs/sp/800/61/r2/final},
+  urldate = {2026-08-01},
+  note = {withdrawn but still the common vocabulary source; superseded guidance exists},
+}
+
+% ----- Section: Regulatory instruments -----
+
+@misc{eu2022dora,
+  author = {{European Union}},
+  title = {{Regulation (EU) 2022/2554 on digital operational resilience for the financial sector (DORA)}},
+  year = {2022},
+  url = {https://eur-lex.europa.eu/eli/reg/2022/2554/oj},
+  urldate = {2026-08-01},
+  note = {regulation},
+}
+
+@misc{eu2024aiact,
+  author = {{European Union}},
+  title = {{Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)}},
+  year = {2024},
+  url = {https://eur-lex.europa.eu/eli/reg/2024/1689/oj},
+  urldate = {2026-08-01},
+  note = {regulation},
+}
+
+% ----- Section: Security engineering literature -----
+
+@article{hardy1988confused,
+  author = {Hardy, Norm},
+  title = {The Confused Deputy: (or why capabilities might have been invented)},
+  journal = {ACM SIGOPS Operating Systems Review},
+  volume = {22},
+  number = {4},
+  pages = {36--38},
+  year = {1988},
+  doi = {10.1145/54289.871709},
+}
+
+@article{saltzer1975protection,
+  author = {Saltzer, Jerome H. and Schroeder, Michael D.},
+  title = {The Protection of Information in Computer Systems},
+  journal = {Proceedings of the IEEE},
+  volume = {63},
+  number = {9},
+  pages = {1278--1308},
+  year = {1975},
+  doi = {10.1109/PROC.1975.9939},
+}
+
+% ----- Section: Agent and prompt-injection research -----
+
+@inproceedings{greshake2023indirect,
+  author = {Greshake, Kai and Abdelnabi, Sahar and Mishra, Shailesh and Endres, Christoph and Holz, Thorsten and Fritz, Mario},
+  title = {Not What You've Signed Up For: Compromising Real-World {LLM}-Integrated Applications with Indirect Prompt Injection},
+  booktitle = {Proceedings of the 16th ACM Workshop on Artificial Intelligence and Security},
+  year = {2023},
+  pages = {79--90},
+  doi = {10.1145/3605764.3623985},
+  note = {preprint earlier; cite published proceedings},
+}
+
+@misc{willison2023prompt,
+  author = {Willison, Simon},
+  title = {Prompt injection: What's the worst that can happen?},
+  year = {2023},
+  month = apr,
+  url = {https://simonwillison.net/2023/Apr/14/worst-that-can-happen/},
+  urldate = {2026-08-01},
+  note = {essay; dated on sight},
+}

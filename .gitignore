@@ -1,0 +1,11 @@
+# Generated figures and render output. Sources are the Mermaid blocks in
+# chapters/, build/mermaid-config.json, build/build_spine_pdf.py, and
+# build/spine-pdf.css, all of which are tracked.
+build/figures/
+build/*.html
+build/*.pdf
+build/spine-build.md
+build/_spine_*.pdf
+__pycache__/
+.DS_Store
+*.pyc

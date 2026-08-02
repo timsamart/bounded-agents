@@ -20,6 +20,8 @@ from pypdf import PdfReader, PdfWriter
 
 ROOT = Path(__file__).resolve().parent.parent
 CHAPTERS = ROOT / "chapters"
+DECISIONS = ROOT / "decisions"
+APPENDICES = ROOT / "appendices"
 BUILD_DIR = ROOT / "build"
 BUILD_MD = BUILD_DIR / "spine-build.md"
 HTML_OUT = BUILD_DIR / "spine.html"
@@ -158,23 +160,27 @@ def rewrite_cites(text: str) -> str:
         return f"[@{key}]" if key else m.group(0)
 
     text = re.sub(r"(?<!\[)\[(\d+)\](?!\()", num_repl, text)
-    # Keep remaining citation-needed visible as italic markers (not links).
+    # Remaining citation-needed (should be none after source pass).
     text = re.sub(
         r"`?\[citation needed:([^\]]+)\]`?",
         r'<span class="citation-needed">[citation needed:\1]</span>',
         text,
     )
-    # ADR / appendix markers: plain spans (appendices forthcoming).
-    text = re.sub(
-        r"`?\[(ADR-\d+)\]`?",
-        r'<span class="forward-ref" title="ADR forthcoming">[\1]</span>',
-        text,
-    )
-    text = re.sub(
-        r"`?\[(A-\d+(?:\.\d+)?)\]`?",
-        r'<span class="forward-ref" title="Appendix forthcoming">[\1]</span>',
-        text,
-    )
+
+    def adr_repl(m: re.Match[str]) -> str:
+        raw = m.group(1)
+        # Normalise ADR-1 → adr-01
+        num = int(raw.split("-", 1)[1])
+        hid = f"adr-{num:02d}"
+        return f'<a class="adr-ref" href="#{hid}">[{raw}]</a>'
+
+    def app_repl(m: re.Match[str]) -> str:
+        raw = m.group(1)  # A-6.1
+        hid = raw.lower().replace(".", "-")  # a-6-1
+        return f'<a class="app-ref" href="#{hid}">[{raw}]</a>'
+
+    text = re.sub(r"`?\[(ADR-\d+)\]`?", adr_repl, text)
+    text = re.sub(r"`?\[(A-\d+(?:\.\d+)?)\]`?", app_repl, text)
     return text
 
 
@@ -213,12 +219,34 @@ def process_chapter(path: Path) -> str:
     return raw
 
 
+def process_backmatter(path: Path) -> str:
+    raw = strip_comments(path.read_text(encoding="utf-8")).strip() + "\n"
+    raw = rewrite_cites(raw)
+    # Demote H1 under a part-level divider already in file; keep stable ids.
+    return raw
+
+
 def build_markdown() -> str:
     parts: list[str] = []
     for path in list_chapters():
         parts.append(process_chapter(path))
         parts.append("\n\\newpage\n")
-    # Force references section for citeproc.
+
+    appendix_order = ["a-", "b-", "c-", "d-", "e-", "f-", "g-", "h-"]
+    appendix_files = [
+        p
+        for prefix in appendix_order
+        for p in sorted(APPENDICES.glob(f"{prefix}*.md"))
+        if p.name != "README.md"
+    ]
+    for path in appendix_files:
+        parts.append(process_backmatter(path))
+        parts.append("\n\\newpage\n")
+        if path.name.startswith("b-"):
+            for adr in sorted(DECISIONS.glob("ADR-*.md")):
+                parts.append(process_backmatter(adr))
+                parts.append("\n\\newpage\n")
+
     parts.append("# References {#references}\n\n::: {#refs}\n:::\n")
     full = "\n\n".join(parts)
     full = preprocess_mermaid(full)
@@ -300,7 +328,7 @@ def inject_cover_and_mermaid(html: str) -> str:
     <p class="cover-subtitle">Governed Agentic Infrastructure</p>
     <p class="cover-tagline">How to give AI agents real authority when the model may be hostile</p>
     <div class="cover-rule"></div>
-    <p class="cover-meta">Chapters 1–21 · appendices forthcoming</p>
+    <p class="cover-meta">Chapters 1–21 · Appendices A–H · ADR-01–ADR-39</p>
     <p class="cover-date">Timo Sam · timosam.com · 2026</p>
     <p class="cover-license">CC BY 4.0 · github.com/timsamart/bounded-agents</p>
   </div>
@@ -440,7 +468,7 @@ def render_pdf() -> None:
     chunks: list[Path] = []
     start = 1
     step = 40
-    while start < 400:
+    while start < 800:
         end = start + step - 1
         chunk_path = BUILD_DIR / f"_spine_chunk_{start}_{end}.pdf"
         print(f"Rendering pages {start}-{end}…")

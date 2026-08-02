@@ -11,13 +11,14 @@ This is the public home of the manuscript. The claim in one sentence: a platform
 | Path | Use |
 |---|---|
 | [`chapters/`](chapters/) | Narrative spine (Parts I–IV, chapters 1–21) |
+| [`decisions/`](decisions/) | ADR-01–ADR-39 (Nygard form) |
+| [`appendices/`](appendices/) | Appendices A–H |
+| [`references.bib`](references.bib) | Bibliography (citeproc) |
 | Releases | Built PDF on each `v*` tag |
 | [`toc.md`](toc.md) | Structure and reading altitudes |
 | [`voice.md`](voice.md) | Editorial voice (read §4 before editing) |
 
-**Linked reading:** the HTML build preserves internal anchors better than print PDF. Use the PDF for offline/print; use HTML (or the chapter markdown) when you need clickable TOC and cross-links.
-
-Appendices A–H and the full ADR set are forthcoming. Markers like `[A-6.1]` and `[ADR-14]` are intentional stubs — see [`appendices/README.md`](appendices/README.md) and [`decisions/README.md`](decisions/README.md).
+**Linked reading:** the HTML build preserves internal anchors (TOC, `[ADR-nn]`, `[A-x.y]`, citations). Use the PDF for offline/print; use HTML or markdown when you need clickable navigation.
 
 ## Cite
 

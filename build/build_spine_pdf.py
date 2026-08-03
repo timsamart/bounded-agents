@@ -18,6 +18,11 @@ from pathlib import Path
 
 from pypdf import PdfReader, PdfWriter
 
+# Local build helpers (same directory as this script).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from icons import icon_label  # noqa: E402
+from nav_map import lookup  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 CHAPTERS = ROOT / "chapters"
 DECISIONS = ROOT / "decisions"
@@ -202,6 +207,64 @@ def number_title(stem: str, title_line: str) -> str:
     return f"# {prefix} {bare} {{#{stable_id}}}"
 
 
+def _esc(text: str) -> str:
+    return (
+        text.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
+
+
+def render_nav_strip(stem: str) -> str:
+    """Compact you-are-here strip. Aids only; chapters remain coherent without them."""
+    meta = lookup(stem)
+    if not meta:
+        return ""
+    cold = meta["cold_open"]
+    cold_word = "Yes" if cold else "No"
+    cold_class = "cold-yes" if cold else "cold-no"
+    part = meta["part"]
+    icon = meta["icon"]
+    altitude = _esc(meta["altitude"])
+    payoff = _esc(meta["payoff"])
+    prereq = _esc(meta["prerequisite"])
+    kind = meta["kind"]
+    where = f"Part {part}" if kind == "part" else f"Part {part} · chapter"
+    return f"""
+<aside class="nav-strip" aria-label="You are here">
+<p class="nav-strip-where">{icon_label(icon, "You are here")} <span class="nav-strip-altitude">{where} · {altitude}</span></p>
+<dl class="nav-strip-meta">
+<div><dt>After this</dt><dd>{payoff}</dd></div>
+<div><dt>Cold open</dt><dd class="{cold_class}"><span class="cold-flag">{cold_word}</span> – {prereq}</dd></div>
+</dl>
+</aside>
+""".strip()
+
+
+def render_part_map(stem: str) -> str:
+    meta = lookup(stem)
+    if not meta or meta.get("kind") != "part":
+        return ""
+    children = meta.get("children") or []
+    if not children:
+        return ""
+    items = []
+    for hid, num, title, function in children:
+        items.append(
+            f'<li><a href="#{hid}">Chapter {num}. {_esc(title)}</a>'
+            f'<span class="part-map-fn">{_esc(function)}</span></li>'
+        )
+    part_label = f"Part {meta['part']} map"
+    return (
+        '<nav class="part-map" aria-label="Chapters in this part">\n'
+        f'<p class="part-map-label">{icon_label(meta["icon"], part_label)}</p>\n'
+        "<ol>\n"
+        + "\n".join(items)
+        + "\n</ol>\n</nav>"
+    )
+
+
 def process_chapter(path: Path) -> str:
     stem = path.stem
     raw = strip_comments(path.read_text(encoding="utf-8")).strip() + "\n"
@@ -210,12 +273,21 @@ def process_chapter(path: Path) -> str:
     if not lines or not lines[0].startswith("# "):
         return raw
     lines[0] = number_title(stem, lines[0])
-    raw = "\n".join(lines)
     # Demote body headings under chapter/part H1 for TOC nesting.
     if re.match(r"^[1-4]\.[1-9]", path.name) or re.match(r"^[1-4]\.0-", path.name):
         body = "\n".join(lines[1:]).lstrip("\n")
         body = shift_headings(body, by=1)
-        raw = lines[0] + "\n\n" + body
+        strip = render_nav_strip(stem)
+        part_map = render_part_map(stem) if re.match(r"^[1-4]\.0-", path.name) else ""
+        chunks = [lines[0], ""]
+        if strip:
+            chunks.extend([strip, ""])
+        if part_map:
+            chunks.extend([part_map, ""])
+        chunks.append(body)
+        raw = "\n".join(chunks)
+    else:
+        raw = "\n".join(lines)
     return raw
 
 

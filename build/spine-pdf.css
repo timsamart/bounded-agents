@@ -517,3 +517,238 @@ h2:not(:first-of-type) {
   color: #5c6b7a;
   letter-spacing: 0.04em;
 }
+
+/* —— Orientation strips (aids, not argument) —— */
+.nav-strip {
+  margin: 0 0 6mm;
+  padding: 3.5mm 4.5mm 3mm;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--frame);
+  background: linear-gradient(180deg, #f7f4ef, var(--paper));
+  color: var(--ink-muted);
+  font-size: 9pt;
+  line-height: 1.45;
+  break-inside: avoid;
+}
+
+.nav-strip-where {
+  margin: 0 0 2.5mm;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.nav-strip-altitude {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 9.5pt;
+  color: var(--ink);
+  margin-left: 1.5mm;
+}
+
+.nav-strip-meta {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8mm;
+}
+
+.nav-strip-meta > div {
+  display: grid;
+  grid-template-columns: 22mm 1fr;
+  gap: 2mm;
+  align-items: start;
+}
+
+.nav-strip-meta dt {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7.5pt;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #7a8794;
+}
+
+.nav-strip-meta dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 9.2pt;
+}
+
+.cold-flag {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cold-yes .cold-flag {
+  color: #2d6a4f;
+}
+
+.cold-no .cold-flag {
+  color: #8b4d35;
+}
+
+.nav-icon-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.6mm;
+  vertical-align: middle;
+}
+
+.nav-icon-svg {
+  display: inline-block;
+  width: 3.2mm;
+  height: 3.2mm;
+  color: var(--ink-muted);
+  flex-shrink: 0;
+  vertical-align: -0.35mm;
+}
+
+.nav-icon-text {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Part map under part dividers */
+.part-map {
+  margin: 0 0 7mm;
+  padding: 0 0 1mm;
+  break-inside: avoid;
+}
+
+.part-map-label {
+  margin: 0 0 3mm;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8pt;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.part-map ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.part-map li {
+  margin: 0;
+  padding: 2.2mm 0;
+  border-bottom: 1px solid #e4ddd4;
+  display: grid;
+  grid-template-columns: minmax(42mm, 0.42fr) 1fr;
+  gap: 3mm;
+  align-items: baseline;
+  font-size: 9.2pt;
+  line-height: 1.35;
+}
+
+.part-map a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.part-map-fn {
+  color: var(--ink-muted);
+  font-size: 8.8pt;
+}
+
+/* Icon legend in front matter */
+.icon-legend {
+  margin: 4mm 0 6mm;
+  width: 100%;
+  font-size: 9pt;
+}
+
+.icon-legend td:first-child {
+  width: 28mm;
+  white-space: nowrap;
+}
+
+.icon-legend .nav-icon-svg {
+  width: 3.6mm;
+  height: 3.6mm;
+  margin-right: 1.5mm;
+}
+
+/* Screen / Pages chrome (hidden in print) */
+@media screen {
+  body {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 1.25rem 1.25rem 4rem;
+  }
+
+  .site-chrome {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0 0 1rem;
+    padding: 0.55rem 0.75rem;
+    background: rgba(250, 248, 245, 0.94);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(6px);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: var(--ink-muted);
+    /* progress bar anchors here */
+  }
+
+  .site-chrome a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .site-chrome a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .site-chrome-progress {
+    flex: 1;
+    text-align: right;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .site-chrome-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    opacity: 0.65;
+  }
+
+  .nav-strip {
+    margin-top: 0.5rem;
+  }
+
+  .cover {
+    min-height: auto;
+  }
+}
+
+@media print {
+  .site-chrome {
+    display: none !important;
+  }
+}

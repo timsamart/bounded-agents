@@ -1,16 +1,27 @@
-name: Build PDF
+name: Build PDF and Pages
 
 on:
   push:
+    branches:
+      - main
     tags:
       - "v*"
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: bounded-agents-pages
+  cancel-in-progress: false
 
 jobs:
-  pdf:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,26 +34,38 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc
+          pandoc --version
 
       - name: Install Python deps
         run: |
           pip install playwright pypdf
           playwright install --with-deps chromium
 
-      - name: Build PDF
+      - name: Build PDF and HTML
         run: python build/build_spine_pdf.py
 
       - name: Verify links
         run: python build/verify_links.py
 
-      - name: Upload artefact
+      - name: Prepare GitHub Pages site
+        run: python build/prepare_pages.py
+
+      - name: Upload PDF artefact
         uses: actions/upload-artifact@v4
         with:
-          name: bounded-agents-pdf
+          name: bounded-agents.pdf
           path: build/bounded-agents.pdf
+          retention-days: 90
+          if-no-files-found: error
 
-      - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Upload Pages artefact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site
+
+      - name: Create draft GitHub Release (version tags)
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           draft: true
@@ -51,5 +74,51 @@ jobs:
           body: |
             Edition draft PDF for **Bounded Agents** (*Governed Agentic Infrastructure*).
 
+            This release is created as a **draft**. The lead author publishes it when the tag is intentional and ready.
+
+            Read online: https://timsamart.github.io/bounded-agents/
             Manuscript: CC BY 4.0 · Scripts: Apache-2.0
             https://github.com/timsamart/bounded-agents
+
+      - name: Publish latest-draft pre-release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          NOTES="$(cat <<'EOF'
+          Continuously updated reading PDF built from `main`.
+
+          This is a **pre-release**, not a numbered edition. Versioned PDFs ship on `v*` tags (draft GitHub Releases until the author publishes).
+
+          Read online (HTML): https://timsamart.github.io/bounded-agents/
+          Stable PDF download: https://github.com/timsamart/bounded-agents/releases/download/latest-draft/bounded-agents.pdf
+          EOF
+          )"
+          if gh release view latest-draft >/dev/null 2>&1; then
+            gh release upload latest-draft build/bounded-agents.pdf --clobber
+            gh release edit latest-draft \
+              --prerelease \
+              --title "Latest draft PDF" \
+              --notes "$NOTES" \
+              --target "${GITHUB_SHA}"
+          else
+            gh release create latest-draft build/bounded-agents.pdf \
+              --prerelease \
+              --title "Latest draft PDF" \
+              --notes "$NOTES" \
+              --target "${GITHUB_SHA}"
+          fi
+
+  deploy-pages:
+    name: Deploy GitHub Pages
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

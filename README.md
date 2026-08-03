@@ -14,7 +14,8 @@ This is the public home of the manuscript. The claim in one sentence: a platform
 | [`decisions/`](decisions/) | ADR-01–ADR-39 (Nygard form) |
 | [`appendices/`](appendices/) | Appendices A–H |
 | [`references.bib`](references.bib) | Bibliography (citeproc) |
-| Releases | Built PDF on each `v*` tag |
+| [Read online (HTML)](https://timsamart.github.io/bounded-agents/) | Rendered spine on GitHub Pages |
+| [Download PDF](https://github.com/timsamart/bounded-agents/releases/download/latest-draft/bounded-agents.pdf) | Latest draft from `main` (stable URL) |
 | [`toc.md`](toc.md) | Structure and reading altitudes |
 | [`voice.md`](voice.md) | Editorial voice (read §4 before editing) |
 
@@ -33,6 +34,22 @@ This is the public home of the manuscript. The claim in one sentence: a platform
 ```
 
 Machine-readable: [`CITATION.cff`](CITATION.cff). Attribution is required under CC BY 4.0; see [`NOTICE`](NOTICE).
+
+## Read online and download
+
+| Format | Link |
+|---|---|
+| **Read online (HTML)** | https://timsamart.github.io/bounded-agents/ |
+| **Latest draft PDF** (stable URL) | https://github.com/timsamart/bounded-agents/releases/download/latest-draft/bounded-agents.pdf |
+| **Versioned editions** | [GitHub Releases](https://github.com/timsamart/bounded-agents/releases) on `v*` tags (draft until the author publishes) |
+
+CI (`.github/workflows/build-pdf.yml`) builds `build/spine.html` and `build/bounded-agents.pdf` on every push to `main`, on pull requests targeting `main`, on `v*` tags, and via `workflow_dispatch`. The job runs `build/build_spine_pdf.py`, then `build/verify_links.py` as a gate.
+
+On `main` pushes the workflow also:
+
+1. Prepares a static site (`build/prepare_pages.py` → `build/site/`) and deploys it to **GitHub Pages** (Settings → Pages → source: **GitHub Actions**)
+2. Uploads a GitHub Actions artefact named `bounded-agents.pdf` (90-day retention)
+3. Refreshes the `latest-draft` **pre-release** PDF attachment
 
 ## Build the PDF
 

@@ -3,6 +3,7 @@
 # build/spine-pdf.css, all of which are tracked.
 build/figures/
 build/*.html
+build/site/
 build/*.pdf
 build/spine-build.md
 build/_spine_*.pdf

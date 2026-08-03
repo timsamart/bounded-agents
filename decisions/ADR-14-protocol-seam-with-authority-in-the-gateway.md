@@ -1,35 +1,33 @@
 # ADR-14. Protocol seam with authority in the gateway {#adr-14}
 
-**Status:** Accepted (edition 0.1 draft)  
+**Status:** Accepted (edition 0.2.0 draft)  
 **Date:** 2026-08-01  
 **Deciders:** Lead author (Timotheos Samartzidis)  
 **Argued in:** `chapters/2.4-the-seam.md`
 
+**In plain terms:** Speak the shared tool protocol at the seam, but keep credentials and authority decisions in the platform gateway - never in the agent.
+
 ## Context
 
-The gateway is a protocol server to the agent and a protocol client to the real servers. It is the only component in the path that holds a credential. The agent never sees one.
+The gateway is a protocol server to the agent and a protocol client to real tools. It is the only component on the path that holds a credential. A proprietary calling convention buys semantics early and costs every integration. Waiting for the protocol to grow authority semantics waits on someone else's roadmap.
 
 ## Decision
 
-Adopt the external tool protocol as the seam; keep authority in the gateway.
+Adopt the external tool protocol (e.g. MCP) as the seam. Keep authority in the gateway: translate, inject, refuse, forward.
 
-That is the chapter's entire design content. The fact that it fits in two sentences is a good sign rather than a suspicious one. Economy of mechanism is a fifty-year-old preference for control surfaces small enough to be understood completely. The gateway earns its place in the trusted computing base by refusing work rather than acquiring it. It does not derive the envelope; chapter 6 does that, and the gateway injects what it was given and cannot amend it. It does not decide; the decision path does, and the gateway asks. It does not hold the evidence chain; chapter 11 does, and the gateway blocks on the acknowledgement. What it does is translate, inject, refuse, and forward. The alternatives were a proprietary internal calling convention, which buys authority semantics on day one and costs every integration you will ever write, and waiting for the protocol to grow those semantics itself, which is a plan with a completion date owned by somebody else.
+## Why not the alternative
 
-## Consequences
+**Rejected:** Proprietary internal calling convention - or wait until the protocol carries full authority semantics.
 
-The rejected alternative is not available as a silent default in conforming implementations. Markers in the spine resolve here; reopening needs an issue and an edition note.
+Proprietary locks you in. Waiting leaves mediation unmeasurable until a date you do not own.
 
-Markers `[ADR-14]` in the spine resolve here. Reopening requires an issue and an edition note; do not silently invert the decision in a pull request.
+## What changes if you follow this
 
-## Rejected alternatives
-
-**Proprietary internal calling convention, or waiting for the protocol to grow authority semantics.**
-
-A competent architect reaches for this under time pressure: Proprietary internal calling convention, or waiting for the protocol to grow authority semantics. It is familiar, often already funded, and easy to defend in a review that never asks what happens when the optimistic assumption fails. It loses here because the safety claim would then rest on a quantity the organisation does not control, or on an unbounded object.
+Extra hop on every tool call; registry and pinning required (ADR-16). Agent never sees a credential.
 
 ## Cost
 
-Priced in the arguing chapter (latency, engineering effort, or operational burden appears in the narrative above or in the Decision section).
+Single-digit milliseconds if co-located; worse if not. Additive to the decision path.
 
 ## Reopen when
 

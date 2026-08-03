@@ -1,6 +1,6 @@
 # Architecture decision records
 
-Nygard-form records for edition 0.1. Spine markers `[ADR-nn]` resolve to these files.
+Nygard-form records for edition 0.2.0. Each opens with **In plain terms** so a cold reader gets the point before the apparatus.
 
 | ID | Title | File |
 |---|---|---|

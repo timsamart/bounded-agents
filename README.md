@@ -2,7 +2,7 @@
 
 **Governed Agentic Infrastructure** – how to give AI agents real authority when the model may be hostile.
 
-Timotheos Samartzidis (Timo Sam) · Edition 0.1 draft · [CC BY 4.0](LICENSE)
+Timotheos Samartzidis (Timo Sam) · Edition 0.2.0 draft · [CC BY 4.0](LICENSE)
 
 This is the public home of the manuscript. The claim in one sentence: a platform can limit what a compromised agent run can do to a set listed before the run started, prove afterwards what it actually did, and stop it within a stated time – without help from the agent.
 
@@ -33,7 +33,7 @@ This is the public home of the manuscript. The claim in one sentence: a platform
   title  = {Bounded Agents: Governed Agentic Infrastructure},
   year   = {2026},
   url    = {https://github.com/timsamart/bounded-agents},
-  note   = {Edition 0.1 draft},
+  note   = {Edition 0.2.0 draft},
 }
 ```
 

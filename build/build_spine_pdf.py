@@ -395,7 +395,7 @@ def inject_cover_and_mermaid(html: str) -> str:
     cover = """
 <header class="cover" id="cover">
   <div class="cover-frame">
-    <p class="cover-kicker">Edition 0.1 draft · Narrative spine</p>
+    <p class="cover-kicker">Edition 0.2.0 draft · Narrative spine</p>
     <h1 class="cover-title">Bounded Agents</h1>
     <p class="cover-subtitle">Governed Agentic Infrastructure</p>
     <p class="cover-tagline">How to give AI agents real authority when the model may be hostile</p>
@@ -497,7 +497,7 @@ def render_chunk(page_range: str, out_path: Path) -> None:
                             font-family: Georgia, 'Times New Roman', serif;
                             font-size:8px; color:#6b7a8a;
                             display:flex; justify-content:space-between;">
-                  <span>Timotheos Samartzidis · CC BY 4.0 · Edition 0.1 draft</span>
+                  <span>Timotheos Samartzidis · CC BY 4.0 · Edition 0.2.0 draft</span>
                   <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
                 </div>
             """,

@@ -1,35 +1,33 @@
 # ADR-11. Allow-list of typed operations {#adr-11}
 
-**Status:** Accepted (edition 0.1 draft)  
+**Status:** Accepted (edition 0.2.0 draft)  
 **Date:** 2026-08-01  
 **Deciders:** Lead author (Timotheos Samartzidis)  
 **Argued in:** `chapters/2.2-the-envelope.md`
 
+**In plain terms:** Only named, registered operations may run. Everything else is refused.
+
 ## Context
 
-The catalogue is an allow-list of typed operations. An operation that is not registered, typed and named is not callable. The platform has no generic escape hatch through which an unregistered effect can be reached.
+Deny-lists grow with fear and never finish. Failure mode is an effect. Allow-lists fail closed.
 
 ## Decision
 
 Allow-list callable operations; refuse anything undeclared.
 
-The deny-list is the alternative and it deserves its strongest form, because it is what most estates run and it is not stupid. It scales with what you have learned. It never blocks a delivery. It concentrates security attention on the operations that actually frightened somebody. It loses on one property: its completeness depends on having enumerated what an adversary will think of, and the tool catalogue grows faster than the list of things anyone has thought of. An allow-list is wrong in the direction that produces a refusal and a ticket. A deny-list is wrong in the direction that produces an effect and an incident review.
+## Why not the alternative
 
-## Consequences
+**Rejected:** Deny-list frightening operations and permit the rest by default.
 
-The uncomfortable consequence is worth stating rather than burying. A new operation cannot be used on the day it ships. It has to be registered, typed, assigned a side-effect class, and admitted to a tier before any envelope can contain it. Until then a developer who built it in the morning cannot call it in the afternoon. That is a real tax on delivery. It is paid by the people whose goodwill the platform depends on. The answer to it is not a story about how security is everyone's responsibility. The answer is chapter 17, which is about making that interval short enough that nobody looks for a way around it.
+Completeness depends on enumerating adversary ideas while catalogues grow faster than reviews.
 
-Markers `[ADR-11]` in the spine resolve here. Reopening requires an issue and an edition note; do not silently invert the decision in a pull request.
+## What changes if you follow this
 
-## Rejected alternatives
-
-**Deny-list frightening operations while permitting the rest.**
-
-Typing is the half of that decision which does the quiet work. An operation carries a declared shape for its arguments. That is what allows the tier to cap an adjustment at €5,000 rather than making a binary decision about whether posting adjustments is permitted at all. Without types, every ceiling collapses into a yes or a no, and yes is the only answer that lets the work proceed.
+New operations cannot ship the day they are written - they need registration and side-effect class (ADR-17). Chapter 17 is about making that friction small.
 
 ## Cost
 
-Priced in the arguing chapter (latency, engineering effort, or operational burden appears in the narrative above or in the Decision section).
+Onboarding cost per operation; security gain on every unknown call.
 
 ## Reopen when
 

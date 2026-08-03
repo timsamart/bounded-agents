@@ -81,7 +81,7 @@ Status: **planned** until drafted. `[OQ-nn]` marks subject-matter resolutions th
 | Ch | Worked moment(s) | Seed |
 |---|---|---|
 | 1 | Payment batch vs agent deputy; four lines in a Tuesday PR | Draft ch. 1 §1–2 |
-| 2 | Borealis constraint inventory (filled example): Entra, Guidewire, model deprecation calendar, incumbent PAM | `[OQ-03]`, `[OQ-22]`, `[OQ-31]` – blank form in spine, full row set here |
+| 2 | Borealis constraint inventory (filled example): workforce IdP, claims SoR without token exchange, model deprecation calendar, incumbent PAM / secrets broker | `[OQ-03]`, `[OQ-22]`, `[OQ-31]` – blank form in spine, full row set here; product catalogues in Appendix E |
 | 3 | `claims-triage` at 09:00: one run, four thousand yesterday; Marta's run vs overnight batch run | `[OQ-01]` mandate vs attended |
 | 4 | Post-incident review: eleven action items, two wrong fixes (classifier + prompt) | `archive/book-v2/` ch. 4 |
 

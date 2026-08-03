@@ -43,7 +43,7 @@ def main() -> int:
         "appendix-b",
     ] + [f"adr-{i:02d}" for i in range(1, 40)]
     # Sample of appendix markers used in spine
-    for marker in ["a-1-1", "a-2-0", "a-4-2", "a-6-1", "a-7-1", "a-8-1"]:
+    for marker in ["a-1-1", "a-2-0", "a-4-2", "a-5-5", "a-6-1", "a-7-1", "a-8-1"]:
         required.append(marker)
     bad = [r for r in required if r not in ids]
     if bad:

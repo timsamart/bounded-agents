@@ -250,7 +250,7 @@ Deliberately not drawn: the architecture. Drawing it here would hand the reader 
 
 **Worked moment(s).**
 
-- Borealis constraint table excerpt: Entra for humans only; CyberArk vault already owns session recording; Guidewire API has no token exchange; OpenAI deprecation notice for `gpt-4.x` pinned 90-day migration – each row tagged imposed / obligation / convention.
+- Borealis constraint table excerpt: workforce IdP issues people and service accounts only; incumbent privileged access / secrets platform already owns vaulting and session recording; core claims system of record API has no token exchange; hosted-model vendor deprecation notice with a 90-day migration window – each row tagged imposed / obligation / convention. Concrete product options live in Appendix E, never as lone spine examples.
 
 ---
 
@@ -513,7 +513,7 @@ Deliberately not drawn: the architecture. Drawing it here would hand the reader 
 
 **Worked moment(s).**
 
-- First Borealis coverage audit: 94% mediated by weight; Kai's path was a Cursor MCP config pointing at production Guidewire – discovered, not designed. Second dimension: hybrid gateway custody per tool `[OQ-04]`.
+- First Borealis coverage audit: 94% mediated by weight; Kai's path was an IDE connector configuration pointing at the production claims system of record – discovered, not designed. Second dimension: hybrid gateway custody per tool `[OQ-04]`.
 
 ---
 
@@ -935,7 +935,7 @@ And then the honest half. The protocol as it currently stands carries plumbing s
 
 **Worked moment(s).**
 
-- Eleven minutes to stop a run: kill switch in architecture doc, control register, and DORA filing – none executed in production before incident. After drill: L1 pause in agent UI, median under one minute. Emergency payment adjustment: Marta uses Guidewire directly; platform records human path, agent not widened `[OQ-05]`.
+- Eleven minutes to stop a run: kill switch in architecture doc, control register, and DORA filing – none executed in production before incident. After drill: L1 pause in agent UI, median under one minute. Emergency payment adjustment: Marta uses the claims system of record directly; platform records human path, agent not widened `[OQ-05]`.
 
 ---
 

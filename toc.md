@@ -196,7 +196,7 @@ Function: close the residual honestly – what remains possible for an adversary
 | B | Architecture decision records | Thirty ADRs in Nygard's form, each with its rejected alternatives, its cost, and the trigger that would reopen it. Also holds the C4 views. |
 | C | Threat model and method | The threat set, and the method for generating threats when this set ages. |
 | D | Artefact schemas | Every wire format in one place: run credential, envelope, tool call, policy decision, refusal, approval record, evidence event, budget. |
-| E | Worked examples | End-to-end walkthroughs compiled from spine worked moments: onboard a tool, derive an envelope, graduate an agent to unattended operation, work a suspected compromise. Inventory in `worked-moments.md`. |
+| E | Worked examples | End-to-end walkthroughs compiled from spine worked moments: onboard a tool, derive an envelope, graduate an agent to unattended operation, work a suspected compromise. Also holds the possible-software-solutions catalogue (category → multiple products). Inventory in `worked-moments.md`. |
 | F | Conformance and scorecard | The conformance suite, and the adoption scorecard with its gating questions. |
 | G | Drills and calendar | Kill-switch drills, the canary suite, the recertification calendar. |
 | H | Glossary | Terms, and the ones the field commonly uses in two senses. |

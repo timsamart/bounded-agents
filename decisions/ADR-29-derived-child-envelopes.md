@@ -2,7 +2,7 @@
 
 **Status:** Accepted (edition 0.1 draft)  
 **Date:** 2026-08-01  
-**Deciders:** Lead author (Timo Sam)  
+**Deciders:** Lead author (Timotheos Samartzidis)  
 **Argued in:** `chapters/4.1-composition.md`
 
 ## Context

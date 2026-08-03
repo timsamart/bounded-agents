@@ -3,8 +3,9 @@ title: "Bounded Agents: Governed Agentic Infrastructure"
 message: "If you use this work, please cite it using the metadata below."
 type: software
 authors:
-  - family-names: Sam
-    given-names: Timo
+  - family-names: Samartzidis
+    given-names: Timotheos
+    alias: "Timo Sam"
     website: "https://timosam.com"
 repository-code: "https://github.com/timsamart/bounded-agents"
 url: "https://github.com/timsamart/bounded-agents"

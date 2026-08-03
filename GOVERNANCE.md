@@ -9,7 +9,7 @@ the lead author decides contested claims that change the spine.
 
 | Role | Who | Decides |
 |---|---|---|
-| Lead author | Timo Sam | Spine claims, edition cuts, release tags |
+| Lead author | Timotheos Samartzidis (Timo Sam) | Spine claims, edition cuts, release tags |
 | Contributor | Anyone with a merged PR | Own edits within review feedback |
 | Maintainer | Named later if needed | Day-to-day triage; not claim ownership |
 

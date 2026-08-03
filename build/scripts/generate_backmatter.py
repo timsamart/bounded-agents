@@ -63,7 +63,7 @@ def write_adr(n: int, title, decision, rejected, reopen, chapters):
 
 **Status:** Accepted (edition 0.1 draft)  
 **Date:** 2026-08-01  
-**Deciders:** Lead author (Timo Sam)  
+**Deciders:** Lead author (Timotheos Samartzidis)  
 **Argued in:** {ch_links}
 
 ## Context

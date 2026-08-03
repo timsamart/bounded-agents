@@ -2,7 +2,7 @@
 
 **Status:** Accepted (edition 0.1 draft)  
 **Date:** 2026-08-01  
-**Deciders:** Lead author (Timo Sam)  
+**Deciders:** Lead author (Timotheos Samartzidis)  
 **Argued in:** `chapters/2.4-the-seam.md`, `chapters/3.1-agent-manifest.md`
 
 ## Context

@@ -10,7 +10,7 @@ Function statements say what a chapter does, not what it covers.
 
 - **Title:** Governed Agentic Infrastructure *(working title – see `concept.md` §8)*
 - **Subtitle:** *(deferred)*
-- **Author:** Timo Sam
+- **Author:** Timotheos Samartzidis (Timo Sam)
 
 **Grouping map** (for `CONV-003` file naming, `chapters/P.C-slug.md`):
 

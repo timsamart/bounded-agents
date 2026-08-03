@@ -2,9 +2,13 @@
 
 **Governed Agentic Infrastructure** – how to give AI agents real authority when the model may be hostile.
 
-Timo Sam · Edition 0.1 draft · [CC BY 4.0](LICENSE)
+Timotheos Samartzidis (Timo Sam) · Edition 0.1 draft · [CC BY 4.0](LICENSE)
 
 This is the public home of the manuscript. The claim in one sentence: a platform can limit what a compromised agent run can do to a set listed before the run started, prove afterwards what it actually did, and stop it within a stated time – without help from the agent.
+
+**About the author.** Principal systems architect (Enterprise Architecture CoE) at R+V Versicherung AG; previously IT-compliance and architecture governance at R+V Re, Head of Technology at LIME Medical (FDA/MDR Class IIa), and research at Fraunhofer IGD. Domains: DORA, EU AI Act, governance and agentic platform architecture. [timosam.com](https://timosam.com). Full text: [`chapters/0.1-front-matter.md`](chapters/0.1-front-matter.md).
+
+**Disclaimer.** Independent technical opinion; not legal advice; not an official position of any employer or regulator. Working draft – validate mechanisms in your own context. No warranty. Attribution required under CC BY 4.0 (see [`NOTICE`](NOTICE)).
 
 ## Read
 
@@ -24,8 +28,8 @@ This is the public home of the manuscript. The claim in one sentence: a platform
 ## Cite
 
 ```bibtex
-@misc{sam2026boundedagents,
-  author = {Sam, Timo},
+@misc{samartzidis2026boundedagents,
+  author = {Samartzidis, Timotheos},
   title  = {Bounded Agents: Governed Agentic Infrastructure},
   year   = {2026},
   url    = {https://github.com/timsamart/bounded-agents},

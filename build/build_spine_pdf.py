@@ -281,7 +281,7 @@ def run_pandoc() -> None:
         "--metadata",
         "subtitle=Governed Agentic Infrastructure",
         "--metadata",
-        "author=Timo Sam",
+        "author=Timotheos Samartzidis",
         "--metadata",
         "date=2026-08-01",
         "--metadata",
@@ -329,7 +329,7 @@ def inject_cover_and_mermaid(html: str) -> str:
     <p class="cover-tagline">How to give AI agents real authority when the model may be hostile</p>
     <div class="cover-rule"></div>
     <p class="cover-meta">Chapters 1–21 · Appendices A–H · ADR-01–ADR-39</p>
-    <p class="cover-date">Timo Sam · timosam.com · 2026</p>
+    <p class="cover-date">Timotheos Samartzidis · timosam.com · 2026</p>
     <p class="cover-license">CC BY 4.0 · github.com/timsamart/bounded-agents</p>
   </div>
 </header>
@@ -425,7 +425,7 @@ def render_chunk(page_range: str, out_path: Path) -> None:
                             font-family: Georgia, 'Times New Roman', serif;
                             font-size:8px; color:#6b7a8a;
                             display:flex; justify-content:space-between;">
-                  <span>Timo Sam · CC BY 4.0 · Edition 0.1 draft</span>
+                  <span>Timotheos Samartzidis · CC BY 4.0 · Edition 0.1 draft</span>
                   <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
                 </div>
             """,

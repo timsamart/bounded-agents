@@ -1,5 +1,5 @@
 Bounded Agents
-Copyright (c) 2026 Timo Sam
+Copyright (c) 2026 Timotheos Samartzidis
 
 This repository contains the manuscript *Governed Agentic Infrastructure*
 (display title: Bounded Agents) and supporting build tooling.
@@ -10,8 +10,13 @@ under Creative Commons Attribution 4.0 International (CC BY 4.0). See LICENSE.
 Build scripts and CI configuration are licensed under the Apache License,
 Version 2.0. See LICENSE-APACHE.
 
-Original author and lead maintainer: Timo Sam <https://timosam.com>
+Original author and lead maintainer: Timotheos Samartzidis (Timo Sam)
+<https://timosam.com>
 Preferred citation: see CITATION.cff
+
+This work is an independent technical and architectural opinion. It is not
+legal advice and is not an official position of any employer, client, or
+regulator. No warranty is offered.
 
 Contributions are accepted under the same dual-license terms. Retain this
 NOTICE and the copyright notice in redistributions. Do not remove or rephrase

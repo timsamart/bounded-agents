@@ -2,7 +2,7 @@
 
 **Status:** Accepted (edition 0.1 draft)  
 **Date:** 2026-08-01  
-**Deciders:** Lead author (Timo Sam)  
+**Deciders:** Lead author (Timotheos Samartzidis)  
 **Argued in:** `chapters/1.4-solution-strategy.md`, `chapters/2.7-evidence.md`, `chapters/3.3-failure-postures.md`
 
 ## Context

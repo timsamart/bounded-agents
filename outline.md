@@ -8,7 +8,7 @@ sources it cites.
 # Outline: Governed Agentic Infrastructure
 
 - **Subtitle:** *(deferred)*
-- **Author:** Timo Sam
+- **Author:** Timotheos Samartzidis (Timo Sam)
 - **Linked artifacts:** `manifesto.md`, `voice.md`, `toc.md`, `references.bib`, `conventions.md`, `concept.md`, `open-questions.md`, `worked-moments.md`
 - **Last revised:** 2026-08-01 (spine first draft complete; all chapter cards [DRAFTED])
 
